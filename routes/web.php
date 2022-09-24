@@ -34,6 +34,7 @@ Route::controller(Controller::class)->group(function(){
 Route::controller(UserController::class)->group(function(){
 
     Route::get('/setting', 'settinguser')->name('setting');
+    Route::get('/admin/user', 'listUser')->name('listUser');
 });
 
 Route::controller(PostController::class)->group(function(){

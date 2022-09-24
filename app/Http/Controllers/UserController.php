@@ -11,7 +11,7 @@ class UserController extends Controller
     }
 
     public function listUser(){
-        return view('');
+        return view('back.crudUser');
     }
    
 
