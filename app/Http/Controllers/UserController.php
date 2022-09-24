@@ -9,6 +9,10 @@ class UserController extends Controller
     public function settinguser(){
         return view('settinguser');
     }
+
+    public function listUser(){
+        return view('');
+    }
    
 
   
