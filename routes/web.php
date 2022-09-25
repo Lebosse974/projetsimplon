@@ -34,7 +34,10 @@ Route::controller(Controller::class)->group(function(){
 Route::controller(UserController::class)->group(function(){
 
     Route::get('/setting', 'settinguser')->name('setting');
-    Route::get('/admin/user', 'listUser')->name('listUser');
+    Route::get('/admin/user', 'list')->name('list.user');
+    Route::get('admin/user/{id}/update', 'showUpdate')->name('user.showUpdate');
+    Route::delete('admin/user/delete', 'delete')->name('user.delete');
+    Route::post('admin/user/update', 'update')->name('user.update');
 });
 
 Route::controller(PostController::class)->group(function(){

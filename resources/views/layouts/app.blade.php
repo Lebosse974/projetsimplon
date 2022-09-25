@@ -76,7 +76,7 @@
                     <a class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0" href="{{ route('homepage') }}">Home</a>
                     <a class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0" href="#">Profile</a>
                     <a class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0" href="#">Communauté</a>
-                    <a class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0" href="#">Backend</a>
+                    <a class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0" href="{{route('list.user')}}">Backend</a>
                 </div>
                 @auth
                     
