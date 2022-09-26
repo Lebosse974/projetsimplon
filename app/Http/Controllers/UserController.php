@@ -28,14 +28,14 @@ class UserController extends Controller
     //VUE showEdit
     public function showUpdate($id)
     {
-        $users = User::with('roles')->find($id);
+        $user = User::find($id);
         $roles = Role::all();
       
 
         return view('back.user.edit', [           
             
             'roles' => $roles,
-            'users ' => $users ,
+            'user ' => $user ,
         ]);
     }
 

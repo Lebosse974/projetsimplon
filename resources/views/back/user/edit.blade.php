@@ -8,17 +8,17 @@
                     <fieldset class="uk-fieldset">
                         <span class="uk-label uk-label-success">name</span>
                         <div class="uk-margin">
-                            <input class="uk-input" type="text" placeholder="{{$users->name}}" name="name" required>
+                            <input class="uk-input" type="text" placeholder="{{$user->name}}" name="name" required>
                         </div>
 
                         <span class="uk-label uk-label-success">pseudo</span>
                         <div class="uk-margin">
-                            <input class="uk-input" type="text" placeholder="{{$users->pseudo}}" name="pseudo">
+                            <input class="uk-input" type="text" placeholder="{{$user->pseudo}}" name="pseudo">
                         </div>
 
                         <span class="uk-label uk-label-success">email</span>
                         <div class="uk-margin">
-                            <input class="uk-input" type="text" placeholder="{{$users->email}}" name="email">
+                            <input class="uk-input" type="text" placeholder="{{$user->email}}" name="email">
                         </div>
                         
 
@@ -38,7 +38,7 @@
                         </div>
 
                         <div class="uk-modal-footer uk-text-left">
-                            <button class="uk-button uk-button-default uk-modal-close" type="button">Annuler</button>
+                            <button class="uk-button uk-button-default uk-modal-close" type="button"><a href="{{route('list.user')}}">Annuler</a></button>
                             <button class="uk-button uk-button-secondary" type="submit">Supprimer</button>
                         </div>
                 

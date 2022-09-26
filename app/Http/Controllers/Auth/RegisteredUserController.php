@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Role;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -39,7 +40,7 @@ class RegisteredUserController extends Controller
             'pseudo' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            // 'avatar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'avatar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
 // dd($request);
@@ -49,6 +50,11 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+        // $path = $request->file('avatar')->store('\images', 'public');
+        // $user->avatar = $path;
+        // $user->roles()->attache([Role::where('nom','=', 'user') ]);
+        
+
 //  dd($user);
         event(new Registered($user));
 

@@ -12,23 +12,22 @@ class PostController extends Controller
     public function store(Request $request)
     {
 
-        $user = Auth::user();
-        $post = new Post();
         $input = [
-            'title' => ['required', 'string', 'max:255'],
-            'content' => ['required', 'string', 'max:255'],
+            'title' => 'required', 'string', 'max:255',
+            'content' => 'required', 'string', 'max:255',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
+        
         $validated = $request->validate($input);
-       
-
-        $path = $request->file('image')->store('\image', 'public');
+        $user = Auth::user();
+        $post = new Post();
+        $path = $request->file('image')->store('images', 'public');
         $post->image = $path;
         $post->title  = $validated['title'];
         $post->content = $validated['content'];
         $post->user_id = $user->id;
         $post->save();
-        return redirect()->route('/homepage');
+        return redirect()->route('homepage');
     }
 
 
@@ -51,26 +50,23 @@ class PostController extends Controller
     public function storetest(Request $request)
     {
 
-        if ($request->method() == 'POST') {
-            $input = [
-                'title' => 'required', 'string', 'max:255',
-                'content' => 'required', 'string', 'max:255',
-                'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            ];
-            $validated = $request->validate($input);
-            
-            
+    
+        $input = [
+            'title' => 'required', 'string', 'max:255',
+            'content' => 'required', 'string', 'max:255',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ];
+        
+        $validated = $request->validate($input);
         $user = Auth::user();
         $post = new Post();
-        if ($request->hasFile('image')) {
-        $path = $request->file('image')->store('\image', 'public');
-        $post->image = $path;
-        }
+        // $path = $request->file('image')->store('\image', 'public');
+        // $post->image = $path;
         $post->title  = $validated['title'];
         $post->content = $validated['content'];
         $post->user_id = $user->id;
         $post->save();
-        return redirect()->route('/');}
+        return redirect()->route('homepage');
     }
     // public function storetest(Request $request)
     // {

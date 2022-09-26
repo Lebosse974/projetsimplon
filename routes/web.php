@@ -31,6 +31,7 @@ Route::controller(Controller::class)->group(function(){
         
 
 });
+
 Route::controller(UserController::class)->group(function(){
 
     Route::get('/setting', 'settinguser')->name('setting');
@@ -45,7 +46,7 @@ Route::controller(PostController::class)->group(function(){
     Route::get('/showPost', 'show')->name('show');
     Route::get('/test', 'showtest')->name('test');
     Route::post('/post', 'store')->name('post.store');
-    Route::post('/test', 'store')->name('test');
+    Route::post('/test', 'storetest')->name('test.edit');
 });
 
 require __DIR__.'/auth.php';

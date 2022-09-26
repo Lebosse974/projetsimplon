@@ -14,7 +14,7 @@
                     heure</span></p>
         </div>
         <p class="text-sm lg:text-base">{{$post->content}}</p>
-        <img src="https://i-sam.unimedias.fr/2021/10/01/bienfaits-pommes.jpeg?auto=format%2Ccompress&cs=tinysrgb&h=630&w=1200"
+        <img src="{{ asset('storage/' . $post->image) }}"
             alt="" class=" sm:h-[250px] py-4 lg:w-full md:h-[450px] lg:h-[650px]">
     </div>
 </div>
