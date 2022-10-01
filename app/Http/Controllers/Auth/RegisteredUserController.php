@@ -50,9 +50,9 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+        // $user->roles()->attache([Role::whith('nom','=', 'user') ]);
         // $path = $request->file('avatar')->store('\images', 'public');
         // $user->avatar = $path;
-        // $user->roles()->attache([Role::where('nom','=', 'user') ]);
         
 
 //  dd($user);

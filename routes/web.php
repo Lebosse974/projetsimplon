@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentaireController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
@@ -32,6 +33,21 @@ Route::controller(Controller::class)->group(function(){
 
 });
 
+Route::middleware(['auth'])->group(function () {
+
+    Route::controller(CommentaireController::class)->group(function () {
+        Route::post('/comment/store', 'store')->name('comment.store');
+    });
+
+    Route::controller(PostController::class)->group(function(){
+        Route::post('/post', 'store')->name('post.store');
+        Route::post('/test', 'storetest')->name('test.edit');
+    });
+
+});
+
+
+
 Route::controller(UserController::class)->group(function(){
 
     Route::get('/setting', 'settinguser')->name('setting');
@@ -45,8 +61,9 @@ Route::controller(PostController::class)->group(function(){
 
     Route::get('/showPost', 'show')->name('show');
     Route::get('/test', 'showtest')->name('test');
-    Route::post('/post', 'store')->name('post.store');
-    Route::post('/test', 'storetest')->name('test.edit');
+    
 });
+
+
 
 require __DIR__.'/auth.php';

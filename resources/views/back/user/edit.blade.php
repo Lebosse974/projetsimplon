@@ -41,13 +41,6 @@
                             <button class="uk-button uk-button-default uk-modal-close" type="button"><a href="{{route('list.user')}}">Annuler</a></button>
                             <button class="uk-button uk-button-secondary" type="submit">Supprimer</button>
                         </div>
-                
-                       
-                
-                        
-                
-                        
-                
                     </fieldset>
                 </form>
             </div>

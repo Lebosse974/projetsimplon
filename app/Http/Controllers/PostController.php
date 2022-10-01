@@ -21,7 +21,8 @@ class PostController extends Controller
         $validated = $request->validate($input);
         $user = Auth::user();
         $post = new Post();
-        $path = $request->file('image')->store('images', 'public');
+       $path= Storage::disk('public')->put('img',$request->file('image'));
+        // $path = $request->file('image')->store('images', 'public');
         $post->image = $path;
         $post->title  = $validated['title'];
         $post->content = $validated['content'];
