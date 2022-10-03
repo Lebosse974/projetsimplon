@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Commentaire;
+use App\Models\Communaute;
 use App\Models\Post;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -16,9 +18,13 @@ class Controller extends BaseController
     public function homepage(){
         $user= Auth::user();
         $posts= Post::All();
+        // $commentaires= Commentaire::All();
+        // $commus= Communaute::all();
         return view('homepage',[
             'user' => $user,
             'posts' => $posts,
+            // 'commentaires'=>$commentaires,
+            // 'commus'=>$commus,
             ]);
     }
 

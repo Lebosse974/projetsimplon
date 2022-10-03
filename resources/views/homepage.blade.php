@@ -6,12 +6,19 @@
             <div class="w-full lg:w-6/12 ml-0 lg:ml-[150px]">
                 <div x-data="{ modelOpen: false }">
 
+                    @if (session('status'))
+                        <div class="uk-alert-success" uk-alert>
+                            <a class="uk-alert-close" uk-close></a>
+                            <p> {{ session('status') }}</p>
+                        </div>
+                    @endif
 
+                    {{-- barre creer post --}}
                     <div class="px-4 mb-4 bg-white rounded-lg shadow-md ">
                         <div class="flex items-center ">
                             <div>
-                                <a class="text-xs font-bold text-gray-800 md:text-2xl" href="#">Meraki <span
-                                        class="text-blue-500">UI</span></a>
+                                <a class="text-xs font-bold text-gray-800 md:text-2xl" href="{{ route('homepage') }}"><img
+                                        class="w-[100px] h-[50]" src="images/rom.png" alt="logo-nasus"></a>
 
                             </div>
                             <form class="uk-search uk-3 uk-align-center uk-search-default">
@@ -20,6 +27,8 @@
                             </form>
                         </div>
                     </div>
+
+                    {{-- carrousel tandance --}}
                     <div class="px-4 py-6 bg-white rounded-lg shadow-md ">
                         <div class="flex items-center justify-between">
                             <h1 class="text-xl font-bold text-gray-700 md:text-2xl">Tendance du jour</h1>
@@ -75,6 +84,11 @@ uk-child-width-1-4@m">
                         </div>
 
                     </div>
+
+
+
+
+                    {{-- post --}}
                     @include('post.show')
 
                 </div>
@@ -117,7 +131,7 @@ uk-child-width-1-4@m">
                         <img src="https://i-sam.unimedias.fr/2021/10/01/bienfaits-pommes.jpeg?auto=format%2Ccompress&cs=tinysrgb&h=630&w=1200"
                             alt="" class="mx-2 rounded-full h-[26px]" width="24">
 
-                        <div class="flex flex-col bg-gray-100 rounded-2xl item-center">
+                        <div class="flex flex-col mb-2 bg-gray-100 rounded-2xl item-center">
                             <a href="#" class="mx-2 font-bold text-black lg:block sm:text-xs lg:text-base">chieef
                                 kieef</a>
                             <p class="m-2"> they want me cause they know i'm next </p>
@@ -130,7 +144,7 @@ uk-child-width-1-4@m">
                         <img src="https://i-sam.unimedias.fr/2021/10/01/bienfaits-pommes.jpeg?auto=format%2Ccompress&cs=tinysrgb&h=630&w=1200"
                             alt="" class="mx-2 rounded-full h-[26px]" width="24">
 
-                        <div class="flex flex-col bg-gray-100 rounded-2xl item-center">
+                        <div class="flex flex-col mb-2 bg-gray-100 rounded-2xl item-center">
                             <a href="#" class="mx-2 font-bold text-black lg:block sm:text-xs lg:text-base">chieef
                                 kieef</a>
                             <p class="m-2"> i want too see pulaski at night, come back to chicago </p>
@@ -139,15 +153,16 @@ uk-child-width-1-4@m">
                     </div>
 
 
-                     {{-- partie commentaire --}}
-                     <div class="flex mb-2">
+                    {{-- partie commentaire --}}
+                    <div class="flex mb-2">
                         <img src="https://i-sam.unimedias.fr/2021/10/01/bienfaits-pommes.jpeg?auto=format%2Ccompress&cs=tinysrgb&h=630&w=1200"
                             alt="" class="mx-2 rounded-full h-[26px]" width="24">
 
-                        <div class="flex flex-col bg-gray-100 rounded-2xl item-center">
+                        <div class="flex flex-col mb-2 bg-gray-100 rounded-2xl item-center">
                             <a href="#" class="mx-2 font-bold text-black lg:block sm:text-xs lg:text-base">chieef
                                 kieef</a>
-                            <p class="m-2"> STUG - The ultimate top-down tank game. Angle your armor to bounce enemy shells,
+                            <p class="m-2"> STUG - The ultimate top-down tank game. Angle your armor to bounce enemy
+                                shells,
                                 and ricochet shots off walls into the enemy’s weak spots. Fight in PvP battles to unlock
                                 new vehicles,
                                 inspired by your favorite tanks. Play now for free in your browser! </p>
@@ -199,13 +214,13 @@ uk-child-width-1-4@m">
                             <div class="flex flex-col ">
 
                                 <a class="rounded-lg bg-[#008AFF] text-white w-2/3 ml-[65px] my-4 py-2 h-[40px] text-center"
-                                    href="#modal-sections" uk-toggle>Create Post</a>
+                                    href="#modal-sections" uk-toggle>Créer un Poste</a>
 
                                 <div id="modal-sections" uk-modal>
                                     <div class="uk-modal-dialog">
                                         <button class="uk-modal-close-default" type="button" uk-close></button>
                                         <div class="uk-modal-header">
-                                            <h2 class="uk-modal-title"> Create Post </h2>
+                                            <h2 class="uk-modal-title"> Créer un Poste </h2>
                                         </div>
                                         <form action="{{ route('post.store') }}" method="POST"
                                             enctype="multipart/form-data">
@@ -227,7 +242,6 @@ uk-child-width-1-4@m">
                                                     <input name="user_id" type="hidden"
                                                         value="@if (Auth::check()) {{ Auth::user()->id }} @endif">
                                                     <label for="titre">content</label>
-
                                                     <input type="text" name="content"
                                                         class="rounded-lg hover:bg-slate-300" placeholder="entrer votre texte"
                                                         required>
@@ -246,8 +260,53 @@ uk-child-width-1-4@m">
 
                                     </div>
                                 </div>
-                                <button class="rounded-lg bg-[#CCE8FE] text-[#3275AC] w-2/3 ml-[65px] mb-4 h-[40px] ">
-                                    Create Communauty </button>
+                                <a class="rounded-lg bg-[#CCE8FE] text-[#3275AC] w-2/3 ml-[65px] mb-4  py-2 h-[40px] text-center "
+                                    href="#modal-commu" uk-toggle>
+                                    Créer une Communauté </a>
+
+                                <div id="modal-commu" uk-modal>
+                                    <div class="uk-modal-dialog">
+                                        <button class="uk-modal-close-default" type="button" uk-close></button>
+                                        <div class="uk-modal-header">
+                                            <h2 class="uk-modal-title"> Créer un Communauté </h2>
+                                        </div>
+                                        <form action="{{ route('communaute.store') }}" method="POST"
+                                            enctype="multipart/form-data">
+                                            @csrf
+                                            <div class="uk-modal-body">
+                                                <div class="flex flex-col">
+                                                    @if ($errors->any())
+                                                        <div class="alert alert-danger">
+                                                            <ul>
+                                                                @foreach ($errors->all() as $error)
+                                                                    <li>{{ $error }}</li>
+                                                                @endforeach
+                                                            </ul>
+                                                        </div>
+                                                    @endif
+
+                                                    <label for="title"> nom</label>
+                                                    <input type="text" name="name">
+                                                    <input name="id" type="hidden"
+                                                        value="@if (Auth::check()) {{ Auth::user()->id }} @endif">
+                                                    <label for="titre"> règlement </label>
+                                                    <textarea type="text" name="content" id="" cols="30" rows="10"
+                                                        class="rounded-lg hover:bg-slate-300" placeholder="entrer votre règlement"
+                                                        required></textarea>
+                                                   
+                                                </div>
+
+
+                                            </div>
+                                            <div class="uk-modal-footer uk-text-right">
+                                                <button class="uk-button uk-button-default uk-modal-close"
+                                                    type="button">Cancel</button>
+                                                <button class="uk-button uk-button-primary" type="submit">Save</button>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
 

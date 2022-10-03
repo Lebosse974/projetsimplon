@@ -28,6 +28,28 @@ class PostController extends Controller
         $post->content = $validated['content'];
         $post->user_id = $user->id;
         $post->save();
+        return redirect()->route('homepage')->with('status','post sans image créer félicitation!');
+    }
+
+    public function storetest(Request $request)
+    {
+
+    
+        $input = [
+            'title' => 'required', 'string', 'max:255',
+            'content' => 'required', 'string', 'max:255',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ];
+        
+        $validated = $request->validate($input);
+        $user = Auth::user();
+        $post = new Post();
+        $path = $request->file('image')->store('image', 'public');
+        $post->image = $path;
+        $post->title  = $validated['title'];
+        $post->content = $validated['content'];
+        $post->user_id = $user->id;
+        $post->save();
         return redirect()->route('homepage');
     }
 
@@ -48,27 +70,7 @@ class PostController extends Controller
         ]);
     }
 
-    public function storetest(Request $request)
-    {
-
-    
-        $input = [
-            'title' => 'required', 'string', 'max:255',
-            'content' => 'required', 'string', 'max:255',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ];
-        
-        $validated = $request->validate($input);
-        $user = Auth::user();
-        $post = new Post();
-        // $path = $request->file('image')->store('\image', 'public');
-        // $post->image = $path;
-        $post->title  = $validated['title'];
-        $post->content = $validated['content'];
-        $post->user_id = $user->id;
-        $post->save();
-        return redirect()->route('homepage');
-    }
+   
     // public function storetest(Request $request)
     // {
     //     if($request->file('image')!=null){

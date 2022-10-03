@@ -43,7 +43,7 @@
                                 <input type="text" name="content" class="rounded-lg hover:bg-slate-300"
                                     placeholder="entrer votre texte" required>
                                 <label for="titre">image</label>
-                                <input type="file">
+                                <input type="file" name="image">
                             </div>
 
 

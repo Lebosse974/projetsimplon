@@ -38,7 +38,7 @@
             <img src="https://i-sam.unimedias.fr/2021/10/01/bienfaits-pommes.jpeg?auto=format%2Ccompress&cs=tinysrgb&h=630&w=1200"
                 alt="" class="mx-2 rounded-full h-[26px]" width="24">
 
-            <div class="flex flex-col bg-gray-100 rounded-2xl item-center">
+            <div class="flex flex-col mb-3 bg-gray-100 rounded-2xl item-center">
                 <a href="#" class="mx-2 font-bold text-black lg:block sm:text-xs lg:text-base">chieef
                     kieef</a>
                 <p class="m-2"> they want me cause they know i'm next </p>

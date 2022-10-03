@@ -20,8 +20,13 @@ class Post extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function comments()
+    public function commentaires()
     {
-        return $this->hasMany(Comment::class, 'post_id', 'id');
+        return $this->hasMany(Commentaire::class, 'post_id', 'id');
+    }
+
+    public function communautes()
+    {
+        return $this->belongsTo(Communaute::class, 'comm_id');
     }
 }
