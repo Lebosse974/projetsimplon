@@ -16,7 +16,7 @@ class AdminSeeder extends Seeder
      */
     public function run()
     {
-        User::insert([
+        User::firstOrCreate( ['pseudo' => 'Lebosse974'],[
             'pseudo'=>'Lebosse974',
             'name'=>'sku sku',
             'email'=>'m@gmail.com',

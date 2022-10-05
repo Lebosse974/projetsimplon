@@ -17,15 +17,17 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        Role::insert([
-            'nom'=>'Admin'
-        ]);
+        Role::firstOrCreate(
+            ['nom' => 'Admin'],
+            ['nom'=>'Admin']);
 
-        Role::insert([
+        Role::firstOrCreate(
+            ['nom' => 'User'],
+        [
             'nom'=>'User'
         ]);
 
-        RoleUser::insert([
+        RoleUser::firstOrCreate( ['role_id' => 1],[
             'role_id'=> 1,
             'user_id'=> User::where('email', 'm@gmail.com')->first()->id
         ]);
