@@ -49,10 +49,12 @@ class RegisteredUserController extends Controller
             'pseudo' => $request->pseudo,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            
         ]);
-        // $user->roles()->attache([Role::whith('nom','=', 'user') ]);
-        // $path = $request->file('avatar')->store('\images', 'public');
-        // $user->avatar = $path;
+        $user->roles()->attache([Role::whith('nom','=', 'user') ]);
+        $path = $request->file('avatar')->store('\avatar', 'public');
+        $user->avatar = $path;
+        $user->save();
         
 
 //  dd($user);

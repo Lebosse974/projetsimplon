@@ -26,6 +26,16 @@
                 <x-text-input id="pseudo" class="block w-full mt-1" type="text" name="pseudo" :value="old('pseudo')" required autofocus />
             </div>
 
+
+            <!-- avatar -->
+            <div>
+                <x-input-label for="avatar" :value="__('avatar')" />
+
+               <input type="file" name="avatar">
+            </div>
+
+            
+
             <!-- Email Address -->
             <div class="mt-4">
                 <x-input-label for="email" :value="__('Email')" />

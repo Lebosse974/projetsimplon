@@ -27,6 +27,7 @@ class PostController extends Controller
         $post->title  = $validated['title'];
         $post->content = $validated['content'];
         $post->user_id = $user->id;
+
         $post->save();
         return redirect()->route('homepage')->with('status','post sans image créer félicitation!');
     }
@@ -56,7 +57,7 @@ class PostController extends Controller
 
     public function show()
     {
-        $posts = Post::All();
+        $posts = Post::with(['commentaires', 'users'])->get() ->orderBy('desc');
         return view('homepage', [
             'posts' => $posts,
         ]);

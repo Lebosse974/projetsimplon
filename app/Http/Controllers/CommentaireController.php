@@ -11,21 +11,25 @@ class CommentaireController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate([
-            'content' => 'required|max:255',
+            'commentaire' => 'required|max:255',
         ]);
         $comment = new Commentaire();
-        $comment->content = $validate['commentaire'];
+        $comment->commentaire = $validate['commentaire'];
         $comment->user_id = $request->input('user_id');
         $comment->post_id = $request->input('post_id');
+        // dd($comment);
         $comment->save();
-        
-      
-       
-        $post = Post::with('user')->findOrFail($request->input('post_id'));
-        $user = $post->user;
-        
-        
 
         return redirect()->back();
+    }
+
+    public function index(){
+        $commentaires = Commentaire::with('posts')->with('user')->get();
+        
+        return view('post.show', [
+            'commentaires' => $commentaires,
+            
+
+        ]);
     }
 }

@@ -36,7 +36,7 @@ Route::controller(Controller::class)->group(function () {
 Route::middleware(['auth'])->group(function () {
 
     Route::controller(CommentaireController::class)->group(function () {
-        Route::post('/comment/store', 'store')->name('comment.store');
+        Route::post('/commentaire/store', 'store')->name('commentaire.store');
     });
 
     Route::controller(PostController::class)->group(function () {

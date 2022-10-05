@@ -17,12 +17,14 @@ class Controller extends BaseController
 
     public function homepage(){
         $user= Auth::user();
-        $posts= Post::All();
+        $posts = Post::with(['commentaires', 'users'])->get();
+        $commentaires = Commentaire::with(['user', 'posts'])->get();
         // $commentaires= Commentaire::All();
         // $commus= Communaute::all();
         return view('homepage',[
             'user' => $user,
             'posts' => $posts,
+            'commentaires'=> $commentaires,
             // 'commentaires'=>$commentaires,
             // 'commus'=>$commus,
             ]);
