@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules;
 
 class UserController extends Controller
 {
@@ -39,16 +40,17 @@ class UserController extends Controller
                 'name' => 'required', 'string', 'max:255',
                 'pseudo' => 'required', 'string', 'max:255',
                 'email' => 'required', 'string', 'email', 'max:255', 'unique:users',
-                'password' => 'required|min:3|max:30|string|confirmed',
+                'password' => ['required', 'confirmed', Rules\Password::defaults()],
                 'roles' => 'required',
                 'roles.*' => 'numeric|exists:role,id',
                 'avatar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
             ];
+            
             $validated = $request->validate($rules);
             
             $user = new User();
             if ($request->hasFile('avatar')) {
-                $path = $request->file('avatar')->store('\images', 'public');
+                $path = $request->file('avatar')->store('\img', 'public');
                 $user->avatar = $path;
             }
             $user->name = $validated['name'];

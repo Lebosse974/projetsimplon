@@ -1,7 +1,7 @@
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
-            <a href="/">
+            <a href="{{ route('homepage') }}">
                 <x-application-logo class="w-20 h-20 text-gray-500 fill-current" />
             </a>
         </x-slot>
@@ -9,12 +9,12 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
             @csrf
 
             <!-- Name -->
             <div>
-                <x-input-label for="name" :value="__('Name')" />
+                <x-input-label for="name" :value="__('Nom')" />
 
                 <x-text-input id="name" class="block w-full mt-1" type="text" name="name" :value="old('name')" required autofocus />
             </div>
@@ -31,7 +31,7 @@
             <div>
                 <x-input-label for="avatar" :value="__('avatar')" />
 
-               <input type="file" name="avatar">
+               <input type="file" name="avatar" accept="image/*" autofocus>
             </div>
 
             
@@ -45,7 +45,7 @@
 
             <!-- Password -->
             <div class="mt-4">
-                <x-input-label for="password" :value="__('Password')" />
+                <x-input-label for="password" :value="__('mot de passe')" />
 
                 <x-text-input id="password" class="block w-full mt-1"
                                 type="password"
@@ -55,7 +55,7 @@
 
             <!-- Confirm Password -->
             <div class="mt-4">
-                <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+                <x-input-label for="password_confirmation" :value="__('Confirmer mot de passe')" />
 
                 <x-text-input id="password_confirmation" class="block w-full mt-1"
                                 type="password"
@@ -64,11 +64,11 @@
 
             <div class="flex items-center justify-end mt-4">
                 <a class="text-sm text-gray-600 underline hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
+                    {{ __('Déjà enregistrer ?') }}
                 </a>
 
                 <x-primary-button class="ml-4">
-                    {{ __('Register') }}
+                    {{ __("S'inscrire") }}
                 </x-primary-button>
             </div>
         </form>

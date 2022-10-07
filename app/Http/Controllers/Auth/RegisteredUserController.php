@@ -51,9 +51,10 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
             
         ]);
-        $user->roles()->attache([Role::whith('nom','=', 'user') ]);
-        $path = $request->file('avatar')->store('\avatar', 'public');
+        $path = $request->file('avatar')->store('\img', 'public');
         $user->avatar = $path;
+        
+        
         $user->save();
         
 

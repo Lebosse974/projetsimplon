@@ -25,10 +25,10 @@
         <tbody>
             @foreach ($posts as $post)
                 <tr>
-                    <td>{{ $post->users->name }}</td>
+                    <td>{{ $post->users->pseudo }}</td>
                     <td>{{ $post->title }}</td>
                     <td>{{ $post->content }}</td>                  
-                    <td>{{ $post->image }} </td>
+                    <td><img src="{{ Storage::url($post->image)}}" class="rounded-lg w-[90px] h-[70px]" alt=""> </td>
                     
                     <td class="flex">
                         <a href="{{ route('admin.post.edit', $post->id) }}"uk-toggle><i
@@ -92,6 +92,7 @@
                 <button class="uk-button uk-button-primary" type="submit">Save</button>
             </div>
         </form>
+        
 
     </div>
 </div>

@@ -27,16 +27,16 @@
             <div class="flex flex-col md:flex-row md:-mx-4">
 
                 <a href="#"> <img
-                        src="https://i-sam.unimedias.fr/2021/10/01/bienfaits-pommes.jpeg?auto=format%2Ccompress&cs=tinysrgb&h=630&w=1200"
+                        src="{{ Storage::url(Auth::user()->avatar) }}"
                         class="my-1 w-[41px] h-[35px] md:mx-4 md:my-0 rounded-full uk_drop" alt=""></a>
                 <div uk-drop="mode: click;offset:5">
                     <div
                         class="flex flex-col justify-center  bg-white w-[295px] max-w-sm mx-auto rounded-lg shadow-md">
                         <div class="border-b border-black ">
                             <div class="flex m-2 rounded-lg hover:bg-slate-300">
-                                <img src="https://i-sam.unimedias.fr/2021/10/01/bienfaits-pommes.jpeg?auto=format%2Ccompress&cs=tinysrgb&h=630&w=1200"
+                                <img src="{{ Storage::url(Auth::user()->avatar) }}"
                                     class="my-3 w-[41px] h-[35px] mx-2 rounded-full" alt="">
-                                <p class="mx-3 font-bold text-black ">{{ Auth::user()->name }}</p>
+                                <p class="mx-3 font-bold text-black ">{{ Auth::user()->pseudo }}</p>
                             </div>
 
                         </div>
@@ -47,7 +47,7 @@
                         @if (Auth::user())
                             <div class="flex items-center m-1 rounded-lg hover:bg-slate-300">
                                 <i class="fa-solid fa-toolbox"></i>
-                                <p class="mx-3 font-bold text-black ">backend</p>
+                                <p class="mx-3 font-bold text-black ">front</p>
                             </div>
                         @endif
                         <div class="flex items-center m-1 rounded-lg hover:bg-slate-300">

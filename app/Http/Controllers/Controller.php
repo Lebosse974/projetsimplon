@@ -17,7 +17,7 @@ class Controller extends BaseController
 
     public function homepage(){
         $user= Auth::user();
-        $posts = Post::with(['commentaires', 'users'])->get();
+        $posts = Post::with(['commentaires', 'users'])->orderBy('created_at','desc')->get();
         $commentaires = Commentaire::with(['user', 'posts'])->get();
         // $commentaires= Commentaire::All();
         // $commus= Communaute::all();

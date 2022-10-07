@@ -57,7 +57,8 @@ class PostController extends Controller
 
     public function show()
     {
-        $posts = Post::with(['commentaires', 'users'])->get() ->orderBy('desc');
+        $posts = Post::with(['commentaires', 'users'])->orderBy('created_at','desc')->get();
+        dd($posts);
         return view('homepage', [
             'posts' => $posts,
         ]);
