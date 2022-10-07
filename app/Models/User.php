@@ -63,4 +63,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Communaute::class, 'user_comm', 'user_id', 'comm_id');
     }
+
+    public function communaute()
+    {
+        return $this->hasMany(Post::class, 'user_id', 'id');
+    }
 }

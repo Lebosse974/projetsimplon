@@ -29,8 +29,8 @@ Route::get('/dashboard', function () {
 
 Route::controller(Controller::class)->group(function () {
     Route::get('/', 'homepage')->name('homepage');
-    Route::get('/post', 'post')->name('post');
-    Route::get('/setting', 'settinguser')->name('setting');
+    Route::get('/commu', 'post')->name('post');
+    
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -48,6 +48,7 @@ Route::middleware(['auth'])->group(function () {
     Route::controller(CommuContoller::class)->group(function () {
         Route::post('/communaute', 'store')->name('communaute.store');
         Route::post('/test', 'storetest')->name('test.edit');
+       
     });
 
 

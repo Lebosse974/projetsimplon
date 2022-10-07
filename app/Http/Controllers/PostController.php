@@ -29,7 +29,7 @@ class PostController extends Controller
         $post->user_id = $user->id;
 
         $post->save();
-        return redirect()->route('homepage')->with('status','post sans image créer félicitation!');
+        return redirect()->route('homepage')->with('status','post  créer félicitation!');
     }
 
     public function storetest(Request $request)

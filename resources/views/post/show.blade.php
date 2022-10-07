@@ -24,7 +24,7 @@
                         <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                         <div class="flex items-center">
                          <img src="{{ Storage::url(Auth::user()->avatar)}}"
-                            alt="" class="mx-2 rounded-full h-[26px]" width="26">
+                            alt="" class="mx-2 rounded-full h-[36px]" width="36">
 
                         <input type="text" class="w-full my-3 bg-gray-200 rounded-lg"
                             placeholder="ajouter un commentaire" name="commentaire" required>   
