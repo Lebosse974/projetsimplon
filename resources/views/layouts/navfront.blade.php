@@ -19,7 +19,7 @@
                                     <div class="flex m-2 rounded-lg hover:bg-slate-300">
                                         <img src="{{ Auth::user()->avatar != null ? Storage::url(Auth::user()->avatar) : asset('../images/rom.png') }}"
                                             class="my-3 w-[41px] h-[35px] mx-2 rounded-full" alt="">
-                                        <p class="mx-3 font-bold text-black ">{{ Auth::user()->name }}</p>
+                                        <p class="mx-3 font-bold text-black ">{{ Auth::user()->pseudo }}</p>
                                     </div>
 
                                 </div>
@@ -87,7 +87,7 @@
                                 <div class="flex m-2 rounded-lg hover:bg-slate-300">
                                     <img src="{{ Auth::user()->avatar != null ? Storage::url(Auth::user()->avatar) : asset('../images/rom.png') }}"
                                         class="my-3 w-[41px] h-[35px] mx-2 rounded-full" alt="">
-                                    <p class="mx-3 font-bold text-black ">{{ Auth::user()->name }}</p>
+                                    <p class="mx-3 font-bold text-black ">{{ Auth::user()->pseudo }}</p>
                                 </div>
 
                             </div>
@@ -177,7 +177,7 @@
                             <div class="flex m-2 rounded-lg hover:bg-slate-300">
                                 <img src="{{ Storage::url(Auth::user()->avatar) }}"
                                     class="my-3 w-[41px] h-[35px] mx-2 rounded-full" alt="">
-                                <p class="mx-3 font-bold text-black ">{{ Auth::user()->name }}</p>
+                                <p class="mx-3 font-bold text-black ">{{ Auth::user()->pseudo }}</p>
                             </div>
 
                         </div>

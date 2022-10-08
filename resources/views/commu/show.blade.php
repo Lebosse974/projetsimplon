@@ -113,7 +113,7 @@
 
                                     <div class="flex flex-col mb-3 bg-gray-100 rounded-2xl item-center">
                                         <a href="#"
-                                            class="mx-2 font-bold text-black lg:block sm:text-xs lg:text-base">{{ $commentaire->user->name }}</a>
+                                            class="mx-2 font-bold text-black lg:block sm:text-xs lg:text-base">{{ $commentaire->user->pseudo }}</a>
                                         <p class="m-2"> {{ $commentaire->commentaire }}</p>
                                     </div>
                                 </div>
