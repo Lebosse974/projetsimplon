@@ -178,7 +178,7 @@
 
                                 <div class="flex items-center border-b border-black">
                                     <p class="m-0 px-2">1</p>
-                                    <p>Submissions must be related to Space/Cosmology</p>
+                                    <p>Submissions must be related to {{$commu->name}}</p>
                                 </div>
                                 <div class="flex items-center border-b border-black">
                                     <p class="m-0 px-2">2</p>
