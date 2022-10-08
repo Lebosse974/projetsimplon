@@ -139,12 +139,15 @@
                     des communautés
                 </h1>
                 @foreach ($commus as $commu )
-                <div class="flex items-center justify-between border-b border-black p-2">
-                    <p class="px-2 m-0">1</p>
+                <div class="flex items-center justify-between p-2 border-b border-black">
+                    <div class="flex items-center w-1/3 ">
+                        <p class="px-2 m-0">1</p>
                     <i class="fa-solid fa-chevron-up"></i>
                     <img src="{{ Storage::url($commu->cover)}}"
                         class="my-3 w-[41px] h-[35px] mx-2 rounded-full" alt="">
-                    <a class="mx-3 font-bold text-base text-black"  href="{{route('communaute.show',$commu->id)}}">{{$commu->name}}</a>
+                    </div>
+                    
+                    <a class="w-1/3 mx-3 text-base font-bold text-black"  href="{{route('communaute.show',$commu->id)}}">{{$commu->name}}</a>
                     @auth
                         <button class="rounded-lg bg-[#008AFF] text-white w-[72px]  my-4 h-[30px]">
                             Join </button>
@@ -171,12 +174,14 @@
                         <div class="flex flex-col">
                              @foreach ($communautes as $communaute )
 
-                <div class="flex  items-center justify-between border-b border-black p-2">
+                <div class="flex items-center justify-between p-2 border-b border-black">
+                    <div class="flex items-center w-1/3 ">
                     <p class="px-2 m-0">1</p>
                     <i class="fa-solid fa-chevron-up"></i>
                     <img src="{{ Storage::url($communaute->cover)}}"
                         class="my-3 w-[41px] h-[35px] mx-2 rounded-full" alt="">
-                    <a class="mx-3 font-bold text-base text-black " href="{{ route('communaute.show',$communaute->id)}}">{{$communaute->name}}</a>
+                    </div>
+                    <a class="mx-3 text-base font-bold text-black " href="{{ route('communaute.show',$communaute->id)}}">{{$communaute->name}}</a>
                     @auth
                         <button class="rounded-lg bg-[#008AFF] text-white w-[72px]  my-4 h-[30px]">
                             Join </button>

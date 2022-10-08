@@ -7,7 +7,7 @@
     <div class="flex flex-col border-b border-black ">
         <div class="flex items-center">
             <img src="{{ Storage::url($post->users->avatar)}}" alt="" class="mx-2 rounded-full h-[26px]" width="26">
-            <a href="#" class="hidden px-2 font-bold text-black lg:block sm:text-xs lg:text-base">{{$post->communautes->name}}</a>
+            <a href="{{route('communaute.show',$post->communautes->id)}}" class="hidden px-2 font-bold text-black lg:block sm:text-xs lg:text-base">{{$post->communautes->name}}</a>
             <p class="text-sm lg:text-base"> poster par {{ $post->users->pseudo }}. <span class="text-gray-500">{{ $post->created_at->format('Y-m-d ') }},  {{ $post->created_at->format('H') }} H {{ $post->created_at->format('i') }}</span></p>
         </div>
         <h1 class="text-xl font-bold text-gray-700 md:text-2xl"> {{ $post->title }}</h1>
