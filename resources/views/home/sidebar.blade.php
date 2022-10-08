@@ -35,7 +35,7 @@
                             <div class="uk-modal-header">
                                 <h2 class="uk-modal-title"> Créer un Poste </h2>
                             </div>
-                            <form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{route('post.store')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="uk-modal-body">
                                     <div class="flex flex-col">
@@ -54,8 +54,9 @@
                                         <input name="user_id" type="hidden"
                                             value="@if (Auth::check()) {{ Auth::user()->id }} @endif">
                                         <label for="titre">content</label>
-                                        <input type="text" name="content" class="rounded-lg hover:bg-slate-300"
-                                            placeholder="entrer votre texte" required>
+                                        
+                                        <textarea type="text" name="content" id="" cols="30" rows="10"
+                                            class="rounded-lg hover:bg-slate-300" placeholder="entrer votre texte" required></textarea>
                                         <label for="titre">image</label>
                                         <input type="file" name="image">
                                     </div>
@@ -64,8 +65,8 @@
                                 </div>
                                 <div class="uk-modal-footer uk-text-right">
                                     <button class="uk-button uk-button-default uk-modal-close"
-                                        type="button">Cancel</button>
-                                    <button class="uk-button uk-button-primary" type="submit">Save</button>
+                                        type="button">Annuler</button>
+                                    <button class="uk-button uk-button-primary" type="submit">Créer</button>
                                 </div>
                             </form>
 
@@ -105,6 +106,10 @@
                                         <textarea type="text" name="rules" id="" cols="30" rows="10"
                                             class="rounded-lg hover:bg-slate-300" placeholder="entrer votre règlement" required></textarea>
 
+                                            <label for="rule"> Description </label>
+                                            <textarea type="text" name="description" id="" cols="30" rows="10"
+                                                class="rounded-lg hover:bg-slate-300" placeholder="entrer une description" required></textarea>
+
                                         <label for="cover">image de font </label>
                                         <input type="file" name="cover">
 
@@ -114,8 +119,8 @@
                                 </div>
                                 <div class="uk-modal-footer uk-text-right">
                                     <button class="uk-button uk-button-default uk-modal-close"
-                                        type="button">Cancel</button>
-                                    <button class="uk-button uk-button-primary" type="submit">Save</button>
+                                        type="button">Annuler</button>
+                                    <button class="uk-button uk-button-primary" type="submit">Créer</button>
                                 </div>
                             </form>
 
@@ -131,32 +136,15 @@
 
             <div class="flex flex-col justify-center bg-white w-[295px] max-w-sm mx-auto rounded-lg shadow-md">
                 <h1 class="pb-2 m-1 mb-3 text-xl font-bold text-center border-b-2 border-black"> top
-                    communities
+                    des communautés
                 </h1>
-                <img src="https://i-sam.unimedias.fr/2021/10/01/bienfaits-pommes.jpeg?auto=format%2Ccompress&cs=tinysrgb&h=630&w=1200"
-                    class="my-3 w-full h-[140px] rounded-lg" alt="">
-                <div class="flex items-center border-b border-black">
+                @foreach ($commus as $commu )
+                <div class="flex items-center justify-between border-b border-black p-2">
                     <p class="px-2 m-0">1</p>
                     <i class="fa-solid fa-chevron-up"></i>
-                    <img src="https://i-sam.unimedias.fr/2021/10/01/bienfaits-pommes.jpeg?auto=format%2Ccompress&cs=tinysrgb&h=630&w=1200"
+                    <img src="{{ Storage::url($commu->cover)}}"
                         class="my-3 w-[41px] h-[35px] mx-2 rounded-full" alt="">
-                    <p class="mx-3 font-bold text-black ">Lebosse974</p>
-                    @auth
-                        <button class="rounded-lg bg-[#008AFF] text-white w-[72px]  my-4 h-[30px]">
-                            Join </button>
-                    @endauth
-                    @guest
-                        <button class="rounded-lg bg-transparent border text-black w-[72px]  my-4 h-[30px]"
-                            disabled>Disabled</button>
-                    @endguest
-
-                </div>
-                <div class="flex items-center border-b border-black">
-                    <p class="px-2 m-0">1</p>
-                    <i class="fa-solid fa-chevron-up"></i>
-                    <img src="https://i-sam.unimedias.fr/2021/10/01/bienfaits-pommes.jpeg?auto=format%2Ccompress&cs=tinysrgb&h=630&w=1200"
-                        class="my-3 w-[41px] h-[35px] mx-2 rounded-full" alt="">
-                    <p class="mx-3 font-bold text-black ">Lebosse974</p>
+                    <a class="mx-3 font-bold text-base text-black"  href="{{route('communaute.show',$commu->id)}}">{{$commu->name}}</a>
                     @auth
                         <button class="rounded-lg bg-[#008AFF] text-white w-[72px]  my-4 h-[30px]">
                             Join </button>
@@ -166,56 +154,51 @@
                             disabled>Disabled</button>
                     @endguest
                 </div>
-                <div class="flex items-center border-b border-black">
-                    <p class="px-2 m-0">1</p>
-                    <i class="fa-solid fa-chevron-up"></i>
-                    <img src="https://i-sam.unimedias.fr/2021/10/01/bienfaits-pommes.jpeg?auto=format%2Ccompress&cs=tinysrgb&h=630&w=1200"
-                        class="my-3 w-[41px] h-[35px] mx-2 rounded-full" alt="">
-                    <p class="mx-3 font-bold text-black ">Lebosse974</p>
-                    @auth
-                        <button class="rounded-lg bg-[#008AFF] text-white w-[72px]  my-4 h-[30px]">
-                            Join </button>
-                    @endauth
-                    @guest
-                        <button class="rounded-lg bg-transparent border text-black w-[72px]  my-4 h-[30px]"
-                            disabled>Disabled</button>
-                    @endguest
-                </div>
-                <div class="flex items-center border-b border-black">
-                    <p class="px-2 m-0">1</p>
-                    <i class="fa-solid fa-chevron-up"></i>
-                    <img src="https://i-sam.unimedias.fr/2021/10/01/bienfaits-pommes.jpeg?auto=format%2Ccompress&cs=tinysrgb&h=630&w=1200"
-                        class="my-3 w-[41px] h-[35px] mx-2 rounded-full" alt="">
-                    <p class="mx-3 font-bold text-black ">Lebosse974</p>
-                    @auth
-                        <button class="rounded-lg bg-[#008AFF] text-white w-[72px]  my-4 h-[30px]">
-                            Join </button>
-                    @endauth
-                    @guest
-                        <button class="rounded-lg bg-transparent border text-black w-[72px]  my-4 h-[30px]"
-                            disabled>Disabled</button>
-                    @endguest
-                </div>
-                <div class="flex items-center border-b border-black">
-                    <p class="px-2 m-0">1</p>
-                    <i class="fa-solid fa-chevron-up"></i>
-                    <img src="https://i-sam.unimedias.fr/2021/10/01/bienfaits-pommes.jpeg?auto=format%2Ccompress&cs=tinysrgb&h=630&w=1200"
-                        class="my-3 w-[41px] h-[35px] mx-2 rounded-full" alt="">
-                    <p class="mx-3 font-bold text-black ">Lebosse974</p>
-                    @guest
-                        <button class="rounded-lg bg-transparent border text-black w-[72px]  my-4 h-[30px]"
-                            disabled>Disabled</button>
-                    @endguest
-                    @auth
-                        <button class="rounded-lg bg-[#008AFF] text-white w-[72px]  my-4 h-[30px]">
-                            Join </button>
-                    @endauth
-                </div>
-                <button class="rounded-lg bg-[#008AFF] text-white w-2/3 ml-[65px] my-6 h-[40px]">
+                @endforeach
+                
+                <button class="rounded-lg bg-[#008AFF] text-white w-2/3 ml-[65px] my-6 h-[40px]" href="#liste-commu" uk-toggle>
                     View All </button>
             </div>
         </div>
 
+        <div id="liste-commu" uk-modal>
+            <div class="uk-modal-dialog">
+                <button class="uk-modal-close-default" type="button" uk-close></button>
+                <div class="uk-modal-header">
+                    <h2 class="uk-modal-title"> listes des communautés </h2>
+                </div>
+                    <div class="uk-modal-body">
+                        <div class="flex flex-col">
+                             @foreach ($communautes as $communaute )
+
+                <div class="flex  items-center justify-between border-b border-black p-2">
+                    <p class="px-2 m-0">1</p>
+                    <i class="fa-solid fa-chevron-up"></i>
+                    <img src="{{ Storage::url($communaute->cover)}}"
+                        class="my-3 w-[41px] h-[35px] mx-2 rounded-full" alt="">
+                    <a class="mx-3 font-bold text-base text-black " href="{{ route('communaute.show',$communaute->id)}}">{{$communaute->name}}</a>
+                    @auth
+                        <button class="rounded-lg bg-[#008AFF] text-white w-[72px]  my-4 h-[30px]">
+                            Join </button>
+                    @endauth
+                    @guest
+                        <button class="rounded-lg bg-transparent border text-black w-[72px]  my-4 h-[30px]"
+                            disabled>Disabled</button>
+                    @endguest
+                </div>
+                @endforeach
+                        </div>
+                        
+
+                    </div>
+                    <div class="uk-modal-footer uk-text-center">
+                        <button class="uk-button uk-button-default uk-modal-close"
+                            type="button">Retour</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
 
         <div class="px-8 mt-10 w-[72px] h-[40px]">
 

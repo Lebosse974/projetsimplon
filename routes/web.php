@@ -40,7 +40,8 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::controller(PostController::class)->group(function () {
-        Route::post('/post', 'store')->name('post.store');
+        Route::post('/posts', 'store')->name('post.store');
+        Route::post('/post', 'storecommu')->name('post.storecommu');
         Route::post('/test', 'storetest')->name('test.edit');
     });
 
@@ -48,6 +49,7 @@ Route::middleware(['auth'])->group(function () {
     Route::controller(CommuContoller::class)->group(function () {
         Route::post('/communaute', 'store')->name('communaute.store');
         Route::post('/test', 'storetest')->name('test.edit');
+        Route::get('/communaute/{id}', 'show')->name('communaute.show');
        
     });
 

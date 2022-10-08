@@ -12,7 +12,7 @@ class Communaute extends Model
     
     public function users()
     {
-        return $this->belongsToMany(User::class,'user_com','comm_id', 'user_id' );
+        return $this->belongsToMany(User::class,'user_comm','comm_id', 'user_id' );
     }
 
     public function user()

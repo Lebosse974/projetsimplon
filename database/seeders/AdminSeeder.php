@@ -21,6 +21,7 @@ class AdminSeeder extends Seeder
             'name'=>'sku sku',
             'email'=>'m@gmail.com',
             'password'=>Hash::make('azerty'),
+            'avatar'=>'../images/rom.png'
             
         ]);
     }

@@ -17,16 +17,19 @@ class Controller extends BaseController
 
     public function homepage(){
         $user= Auth::user();
-        $posts = Post::with(['commentaires', 'users'])->orderBy('created_at','desc')->get();
+        $posts = Post::with(['commentaires', 'users','communautes'])->orderBy('created_at','desc')->get();
         $commentaires = Commentaire::with(['user', 'posts'])->get();
+        $commus = Communaute::skip(0)->take(5)->get();
+        $communautes = Communaute::all();
         // $commentaires= Commentaire::All();
-        // $commus= Communaute::all();
+        
         return view('homepage',[
             'user' => $user,
             'posts' => $posts,
             'commentaires'=> $commentaires,
             // 'commentaires'=>$commentaires,
-            // 'commus'=>$commus,
+            'commus'=>$commus,
+            'communautes'=>$communautes,
             ]);
     }
 
