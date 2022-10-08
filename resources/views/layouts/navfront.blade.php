@@ -24,9 +24,9 @@
 
                                 </div>
                                 @foreach (Auth::user()->notifications as $notification)
-                                    <div class="hover:bg-slate-300 flex flex-col p-2 rounded-lg">
-                                        <a href="#" class="text-black hover:text-black hover:no-underline my-2 ">
-                                            <div class="flex item-center justify-center">
+                                    <div class="flex flex-col p-2 rounded-lg hover:bg-slate-300">
+                                        <a href="#" class="my-2 text-black hover:text-black hover:no-underline ">
+                                            <div class="flex justify-center item-center">
                                                 <img class="h-[35px] w-[35px] rounded-full my-2 mx-1"
                                                     src="{{ asset('storage' . $notification->data['user']['avatar']) }}"
                                                     alt="">
@@ -34,7 +34,7 @@
 
                                                     <p>
                                                         <strong>{{ $notification->data['user']['pseudo'] }}</strong> A commenter
-                                                        votre poste
+                                                        votre poste :
                                                         <span class="text-[#9558A3] hover:text-[#937CA3]">{{ $notification->data['post']['content'] }}</span> :
                                                     </p>
                                                     <p> <span class="hover:text-[#937CA3] bg-slate-300 rounded-full p-2">"{{ $notification->data['commentaire']['commentaire'] }}"</span>
