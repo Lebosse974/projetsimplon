@@ -9,7 +9,7 @@
             <ul class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m">
                 @foreach ($hasars as $hasar)
                     <li>
-                        <img src="{{ Storage::url($hasar->cover) }}" class="w-[195px] h-[295px] mx-1" alt="">
+                        <img src="{{ Storage::url($hasar->cover) }}" class="w-[195px] h-[190px] mx-1" alt="">
                         <div class="uk-position-center uk-panel">
                             <a class="mx-3 text-base font-bold" href="{{route('communaute.show',$hasar->id)}}">{{ $hasar->name }}</a>
                         </div>
