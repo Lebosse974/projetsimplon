@@ -18,6 +18,7 @@ class Controller extends BaseController
     public function homepage(){
         $user= Auth::user();
         $posts = Post::with(['commentaires', 'users','communautes'])->orderBy('created_at','desc')->get();
+        $hasars =Communaute::inRandomOrder()->get();
         $commentaires = Commentaire::with(['user', 'posts'])->get();
         $commus = Communaute::skip(0)->take(5)->get();
         $communautes = Communaute::all();
@@ -27,7 +28,7 @@ class Controller extends BaseController
             'user' => $user,
             'posts' => $posts,
             'commentaires'=> $commentaires,
-            // 'commentaires'=>$commentaires,
+            'hasars'=>$hasars,
             'commus'=>$commus,
             'communautes'=>$communautes,
             ]);

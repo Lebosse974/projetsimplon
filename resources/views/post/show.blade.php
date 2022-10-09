@@ -59,7 +59,7 @@
         <div class="flex items-center">
             <img src="{{ Storage::url($post->users->avatar)}}" alt="avatar" class="mx-2 rounded-full h-[26px]" width="26">
             
-            <p class="text-sm lg:text-base font-bold text-black"> {{ $post->users->pseudo }}. <span class="text-gray-500">{{ $post->created_at->format('Y-m-d ') }},  {{ $post->created_at->format('H') }} H {{ $post->created_at->format('i') }}</span></p>
+            <p class="text-sm font-bold text-black lg:text-base"> {{ $post->users->pseudo }}. <span class="text-gray-500">{{ $post->created_at->format('Y-m-d ') }},  {{ $post->created_at->format('H') }} H {{ $post->created_at->format('i') }}</span></p>
         </div>
         <h1 class="text-xl font-bold text-gray-700 md:text-2xl"> {{ $post->title }}</h1>
         <p class="text-sm text-justify lg:text-base">{{ $post->content }}</p>
