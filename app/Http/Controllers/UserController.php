@@ -13,10 +13,39 @@ class UserController extends Controller
 {
 
     //vue parametre user
-    public function settinguser()
+    public function settingshow($id)
     {
-        return view('settinguser');
+
+        $user = User::find($id);
+        return view('settinguser',['user' => $user]);
     }
+
+
+     // update utillisateur
+     public function settingupdate(Request $request)
+     {
+ 
+         $user = User::find($request->input('id'));
+         $rules = [
+             'name' => 'required', 'string', 'max:255',
+             'pseudo' => 'required', 'string', 'max:255',
+             'email' => 'required', 'string', 'email', 'max:255', 'unique:users',
+             'avatar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+         ];
+ 
+         $validated = $request->validate($rules);
+         if ($request->hasFile('avatar')) {
+             $path = $request->file('avatar')->store('\images', 'public');
+             $user->avatar = $path;
+         }
+         $user->name = $validated['name'];
+         $user->pseudo = $validated['pseudo'];
+         $user->email = $validated['email'];
+         $user->save();
+         
+ 
+         return redirect()->back()->with('status', 'vos données ont été mises à jour');
+     }
 
 
     // vue crud 

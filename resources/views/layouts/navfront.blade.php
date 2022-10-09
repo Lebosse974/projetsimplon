@@ -98,7 +98,7 @@
 
                             <div class="flex items-center m-1 my-2 border-b h-[36px] ">
                                 <i class="fa-solid fa-id-card"></i>
-                                <a class="mx-3 font-bold text-black " href="#">Profile</a>
+                                <a class="mx-3 font-bold text-black " href="{{ route('setting.show',Auth::user()->id)}}">Profile</a>
                             </div>
 
 
@@ -114,14 +114,14 @@
 
                             <div class="flex items-center m-1 border-b h-[36px] ">
                                 <i class="fa-solid fa-gear"></i>
-                                <p class="mx-3 font-bold text-black ">Setting</p>
+                                <a class="mx-3 font-bold text-black " href="{{ route('setting.show',Auth::user()->id)}}">Setting</a>
                             </div>
 
 
                             @if (Auth::user())
                                 <div class="flex items-center m-1 border-b h-[36px] ">
                                     <i class="fa-solid fa-toolbox"></i>
-                                    <p class="mx-3 font-bold text-black ">backend</p>
+                                    <a class="mx-3 font-bold text-black " href="{{ route('list.user') }}">backend</a>
                                 </div>
                             @endif
                             <div class="flex items-center m-1 ">
@@ -158,7 +158,7 @@
 
             @auth
                 <a class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0" href="{{ route('homepage') }}">Home</a>
-                <a class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0" href="#">Profile</a>
+                <a class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0" href="{{ route('setting.show',Auth::user()->id)}}">Profile</a>
                 <a class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0" href="#">Communauté</a>
                 <a class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0"
                     href="{{ route('list.user') }}">Backend</a>
@@ -184,13 +184,13 @@
 
                         <div class="flex items-center m-1 rounded-lg hover:bg-slate-300">
                             <i class="fa-solid fa-gear"></i>
-                            <p class="mx-3 font-bold text-black ">Setting</p>
+                            <a class="mx-3 font-bold text-black hover:no-underline leading-10 " href="{{ route('setting.show',Auth::user()->id)}}">Setting</a>
                         </div>
 
 
                         <div class="flex items-center m-1 rounded-lg hover:bg-slate-300">
                             <i class="fa-solid fa-toolbox"></i>
-                            <p class="mx-3 font-bold text-black ">backend</p>
+                            <a class="mx-3 hover:no-underline font-bold text-black  leading-10"  href="{{ route('list.user') }}">backend</a>
                         </div>
 
 

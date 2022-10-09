@@ -44,6 +44,21 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+
+   
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'role_users', 'user_id', 'role_id');
+    }
+
+
+   
+     
+    
+     
+
+
+
     public function posts()
     {
         return $this->hasMany(Post::class, 'user_id', 'id');
@@ -54,10 +69,6 @@ class User extends Authenticatable
         return $this->hasMany(Commentaire::class, 'user_id', 'id');
     }
 
-    public function roles()
-    {
-        return $this->belongsToMany(Role::class, 'role_users', 'user_id', 'role_id');
-    }
 
     public function communautes()
     {

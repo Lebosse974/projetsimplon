@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\Models\Role;
+use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,20 +23,27 @@ class Admin
         {
               $role= Role::all();
               $users = Auth::user();
+              $user= User::with('roles')->get();
+             
+            
 
               if (!Auth::check()) {
-                return redirect()->route('homepage')->with('status', " connection admin non admis ");
+                return redirect()->route('homepage')->with('status', " connectez-vous a votre compte admin pour acceder au back ");
                 //return route('login');
             }
+          
+             
 
-              if(isset($users))
-              {
+              if( $request->user()->id == 1 or $request->user()->id == 14  OR $request->user()->id == 13  ){
+                
                 return $next($request);
               }
 
               else{
                 return redirect()->route('homepage')->with('status', " connection admin non admis ");
               }
+            
+              
         }
         
         

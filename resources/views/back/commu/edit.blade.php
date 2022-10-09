@@ -13,27 +13,32 @@
                     </ul>
                 </div>
             @endif
-                <form method="post" action="{{route('admin.post.update')}}" enctype="multipart/form-data">
+                <form method="post" action="{{route('admin.commu.update')}}" enctype="multipart/form-data">
                     @csrf
                     <fieldset class="uk-fieldset">
-                        <input hidden name="id" value="{{ $post->id }}">
-                        <span class="uk-label uk-label-success">titre</span>
+                        <input hidden name="id" value="{{ $commu->id }}">
+                        <span class="uk-label uk-label-success">Nom</span>
                         <div class="uk-margin">
-                            <input class="uk-input" type="text" value="{{$post->title}}" name="title" required>
+                            <input class="uk-input" type="text" value="{{$commu->name}}" name="name" required>
                         </div>
 
-                        <span class="uk-label uk-label-success">contenue</span>
+                        <span class="uk-label uk-label-success">Réglement</span>
                         <div class="uk-margin">
-                            <input class="uk-input" type="text" value="{{$post->content}}" name="content">
+                            <input class="uk-input" type="text" value="{{$commu->rules}}" name="rules">
+                        </div>
+
+                        <span class="uk-label uk-label-success">Description</span>
+                        <div class="uk-margin">
+                            <input class="uk-input" type="text" value="{{$commu->description}}" name="description">
                         </div>
 
                         <span class="uk-label uk-label-success">image</span>
                         <div class="uk-margin ">
-                            <input class="uk-input" type="file" placeholder="choisir une photo" name="image">
+                            <input class="uk-input" type="file" value="{{$commu->cover}}" placeholder="choisir une photo" name="cover">
                         </div>
 
                         <div class="uk-modal-footer uk-text-left  ">
-                            <button class="uk-button uk-button-default uk-modal-close" type="button"><a href="{{route('admin.post.index')}}">Annuler</a></button>
+                            <button class="uk-button uk-button-default uk-modal-close" type="button"><a href="{{route('admin.commu.show')}}">Annuler</a></button>
                             <button class="uk-button uk-button-secondary" type="submit">Modifer</button>
                         </div>
                     </fieldset>

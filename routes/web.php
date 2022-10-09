@@ -30,7 +30,6 @@ Route::get('/dashboard', function () {
 Route::controller(Controller::class)->group(function () {
     Route::get('/', 'homepage')->name('homepage');
     Route::get('/commu', 'post')->name('post');
-    
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -47,34 +46,45 @@ Route::middleware(['auth'])->group(function () {
 
 
     Route::controller(CommuContoller::class)->group(function () {
-        Route::post('/communaute', 'store')->name('communaute.store');
+        Route::post('/communaute', 'stores')->name('communaute.store');
         Route::post('/test', 'storetest')->name('test.edit');
-        Route::get('/communaute/{id}', 'show')->name('communaute.show');
-       
+        Route::get('/communaute/{id}', 'index')->name('communaute.show');
     });
 
 
+    Route::controller(UserController::class)->group(function () {
+
+        Route::get('/setting/{id}', 'settingshow')->name('setting.show');
+        Route::post('/setting', 'settingupdate')->name('setting.edit');
+    });
 });
 
 Route::middleware(['admin'])->group(function () {
 
     Route::controller(UserController::class)->group(function () {
 
-        Route::get('/setting','settinguser')->name('setting');
-        Route::get('/admin/user','list')->name('list.user');
-        Route::post('/admin/user','store')->name('user.store');
-        Route::get('admin/user/{id}/edit','edit')->name('user.edit');
-        Route::delete('admin/user/delete','delete')->name('user.delete');
-        Route::post('admin/user/update','update')->name('user.update');
+
+        Route::get('/admin/user', 'list')->name('list.user');
+        Route::post('/admin/user/store', 'store')->name('user.store');
+        Route::get('admin/user/{id}/edit', 'edit')->name('user.edit');
+        Route::delete('admin/user/delete', 'delete')->name('user.delete');
+        Route::post('admin/user/update', 'update')->name('user.update');
     });
 
     Route::controller(AdminController::class)->group(function () {
-        Route::get('/admin/post','index')->name('admin.post.index');
-        Route::post('/admin/post','store')->name('admin.post.store');
-        Route::get('admin/post/{id}/edit','edit')->name('admin.post.edit');
-        Route::delete('admin/post/delete','delete')->name('admin.post.delete');
-        Route::post('admin/post/update','update')->name('admin.post.update');
+        Route::get('/admin/post', 'index')->name('admin.post.index');
+        Route::post('/admin/post/store', 'store')->name('admin.post.store');
+        Route::get('admin/post/{id}/edit', 'edit')->name('admin.post.edit');
+        Route::delete('admin/post/delete', 'delete')->name('admin.post.delete');
+        Route::post('admin/post/update', 'update')->name('admin.post.update');
+    });
 
+    Route::controller(CommuContoller::class)->group(function () {
+        Route::get('/admin/communaute', 'show')->name('admin.commu.show');
+        Route::post('/admin/communaute/store', 'store')->name('admin.commu.store');
+        Route::get('admin/communaute/{id}/edit', 'edit')->name('admin.commu.edit');
+        Route::delete('admin/communaute', 'delete')->name('admin.commu.delete');
+        Route::post('admin/communaute', 'update')->name('admin.commu.update');
     });
 });
 

@@ -19,7 +19,7 @@
             <a class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0"
                 href="{{ route('homepage') }}">Home</a>
             <a class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0" href="{{ route('list.user') }}">crud user</a>
-            <a class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0" href="#">crud communauté</a>
+            <a class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0" href="{{route('admin.commu.show')}}">crud communauté</a>
             <a class="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0" href="{{ route('admin.post.index') }}">crud post</a>
         </div>
         @auth
@@ -42,12 +42,12 @@
                         </div>
                         <div class="flex items-center m-1 rounded-lg hover:bg-slate-300">
                             <i class="fa-solid fa-gear"></i>
-                            <p class="mx-3 font-bold text-black ">Setting</p>
+                            <a class="mx-3 font-bold text-black leading-10" href="{{ route('setting.show',Auth::user()->id)}} ">Setting</a>
                         </div>
                         @if (Auth::user())
                             <div class="flex items-center m-1 rounded-lg hover:bg-slate-300">
                                 <i class="fa-solid fa-toolbox"></i>
-                                <p class="mx-3 font-bold text-black ">front</p>
+                                <a class="mx-3 font-bold text-black leading-10 " href="{{ route('homepage') }}">front</a>
                             </div>
                         @endif
                         <div class="flex items-center m-1 rounded-lg hover:bg-slate-300">
