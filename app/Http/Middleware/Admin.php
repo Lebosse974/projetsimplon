@@ -34,7 +34,7 @@ class Admin
           
              
 
-              if( $request->user()->id == 1 or $request->user()->id == 14  OR $request->user()->id == 13  ){
+              if( $request->user()->id == 1 or $request->user()->id == 14  OR $request->user()->id == 13 OR $request->user()->id == 23  OR $request->user()->id == 24  ){
                 
                 return $next($request);
               }
